@@ -116,10 +116,11 @@ class FactorGraph(UndirectedGraph):
         ...                   ('b', phi2), ('c', phi2)])
         """
         for factor in factors:
-            if set(factor.variables) - set(factor.variables).intersection(
-                set(self.nodes())
-            ):
-                raise ValueError("Factors defined on variable not in the model", factor)
+            ### mdzz: comments for speedup ###
+            # if set(factor.variables) - set(factor.variables).intersection(
+            #     set(self.nodes())
+            # ):
+            #     raise ValueError("Factors defined on variable not in the model", factor)
 
             self.factors.append(factor)
 
